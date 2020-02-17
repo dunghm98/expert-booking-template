@@ -19,7 +19,41 @@ Version      : 1.0
 		else {
 		}
 	});
+
+	// Address study show
 	
+	$('#study-method-select #home-study').change(function(){
+		if(this.checked) {
+			$('#custom-study-address').show();
+		}
+		else {
+			$('#custom-study-address').hide();
+		}
+	})
+	
+	// Weekday calendar
+
+	$('.day-of-week > .btn').click(function(){
+		// console.log($(this).val());
+		let selector = "." + $(this).val();
+		selectDay(selector);
+	})
+	function selectDay(selector){
+		let inputSelector = $(selector + " ul input");
+		var morning = inputSelector[0].checked;
+		var afternoon = inputSelector[1].checked;
+		var evening = inputSelector[2].checked;
+		
+		if(morning||afternoon||evening){
+			var a = inputSelector.prop('checked', true)
+		}
+		if(morning && afternoon && evening){
+			var a = inputSelector.prop('checked', false)
+		}
+		if(!morning && !afternoon && !evening){
+			var a = inputSelector.prop('checked', true)
+		}
+	}
 	// Education Add More
 	
     $(".education-info").on('click','.trash', function () {
